@@ -643,10 +643,7 @@ class LegalReadinessQuiz:
     Helper function to find the title of the current section by searching backwards
     from the current question to find the last 'section_intro' node.
     """
-    # To do this, we need a way to look "backwards" through the quiz dictionary.
-    # Let's create a reverse map for easier lookups.
-    # Note: This reverse map is created every time, which is not super efficient,
-    # but it is very safe and reliable for our current structure.
+    # Create a reverse map for easier lookups.
     parent_map = {}
     for key, value in self.nodes.items():
         if 'next' in value:
@@ -656,7 +653,7 @@ class LegalReadinessQuiz:
         if 'no' in value:
             parent_map[value['no']] = key
 
-    # Now, trace back from the current node until we find a section intro.
+    # Trace back from the current node until we find a section intro.
     temp_node_id = self.current_node_id
     for _ in range(len(self.nodes)): # Safety break to prevent infinite loops
         node = self.nodes.get(temp_node_id, {})
@@ -666,11 +663,10 @@ class LegalReadinessQuiz:
         # Move to the parent node for the next loop
         temp_node_id = parent_map.get(temp_node_id)
         if not temp_node_id:
-            return None # We've reached the start and found nothing
+            return "Section" # Return a default if no title is found
     
-    return None # Return None if no title is found
+    return "Section" # Return a default if no title is found
 
-    def run_quiz_in_terminal(self):
         """
         A simple text-based loop to run the entire quiz for testing purposes
         in a terminal or command prompt.
