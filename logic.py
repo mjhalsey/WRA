@@ -597,6 +597,7 @@ class LegalReadinessQuiz:
 
         self.current_node_id = "start"
         self.checklist = []
+        self.current_section_title = "Introduction"
 
     def get_current_node(self):
         """Returns the current question or outcome node from the dictionary."""
@@ -638,34 +639,13 @@ class LegalReadinessQuiz:
             else:
                 # If an outcome has no 'next', it's a dead end. Stop the loop.
                 break
-def get_current_section_title(self):
-    """
-    Helper function to find the title of the current section by searching backwards
-    from the current question to find the last 'section_intro' node.
-    """
-    # Create a reverse map for easier lookups.
-    parent_map = {}
-    for key, value in self.nodes.items():
-        if 'next' in value:
-            parent_map[value['next']] = key
-        if 'yes' in value:
-            parent_map[value['yes']] = key
-        if 'no' in value:
-            parent_map[value['no']] = key
 
-    # Trace back from the current node until we find a section intro.
-    temp_node_id = self.current_node_id
-    for _ in range(len(self.nodes)): # Safety break to prevent infinite loops
-        node = self.nodes.get(temp_node_id, {})
-        if node.get('type') == 'section_intro' and 'title' in node:
-            return node['title']
-        
-        # Move to the parent node for the next loop
-        temp_node_id = parent_map.get(temp_node_id)
-        if not temp_node_id:
-            return "Section" # Return a default if no title is found
-    
-    return "Section" # Return a default if no title is found
+    def get_current_section_title(self):
+    """Helper function that simply returns the currently stored section title."""
+    return self.current_section_title
+
+
+
 
 
     def run_quiz_in_terminal(self):
