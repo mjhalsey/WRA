@@ -29,6 +29,7 @@ if node:
         # --- Display a Section Introduction ---
         if node.get('title'):
             st.header(node.get('title'))
+            quiz.current_section_title = node.get('title')
 
         # Replace the "\n" characters with markdown for paragraph breaks
         display_text = node['text'].replace('\n', '\n\n')
