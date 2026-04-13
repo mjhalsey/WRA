@@ -638,7 +638,7 @@ class LegalReadinessQuiz:
             else:
                 # If an outcome has no 'next', it's a dead end. Stop the loop.
                 break
-        def get_current_section_title(self):
+    def get_current_section_title(self):
     """
     Helper function to find the title of the current section by searching backwards
     from the current question to find the last 'section_intro' node.
