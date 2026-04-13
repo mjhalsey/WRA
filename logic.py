@@ -638,7 +638,7 @@ class LegalReadinessQuiz:
             else:
                 # If an outcome has no 'next', it's a dead end. Stop the loop.
                 break
-    def get_current_section_title(self):
+def get_current_section_title(self):
     """
     Helper function to find the title of the current section by searching backwards
     from the current question to find the last 'section_intro' node.
@@ -667,6 +667,8 @@ class LegalReadinessQuiz:
     
     return "Section" # Return a default if no title is found
 
+
+    def run_quiz_in_terminal(self):
         """
         A simple text-based loop to run the entire quiz for testing purposes
         in a terminal or command prompt.
