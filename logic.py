@@ -717,6 +717,6 @@ def get_current_section_title(self):
 
 
 # --- This is the part of the script that makes it runnable ---
-if __name__ == "__main__":
-    quiz_instance = LegalReadinessQuiz()
-    quiz_instance.run_quiz_in_terminal()
+# if __name__ == "__main__":
+#     quiz_instance = LegalReadinessQuiz()
+#     quiz_instance.run_quiz_in_terminal()
